@@ -1,0 +1,18 @@
+
+<html>
+<body>
+<div class="wrapper">
+
+        <nav class="container #efebe9 brown lighten-5">
+            <div class="nav-wrapper">
+                <form>
+                    <div class="input-field">
+                        <form action="{{ url_for('handle_data') }}" method="post">
+    <input type="text" name="projectFilepath">
+    <input type="submit">
+</form> </div>
+                </form>
+            </div>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,url_for,request
 
 from couchbase.cluster import Cluster
 from couchbase.cluster import PasswordAuthenticator
@@ -24,11 +24,15 @@ def index():
     from couchbase.n1ql import N1QLQuery
     row_iter = cb.n1ql_query(N1QLQuery('SELECT DockingID,ClientName,ClientID,CustomerName,CustomerID,Expression,Probability,DateTime FROM MyBucket' ))
     l=[]
-    for row in row_iter: 
-        l.append(row)
-        print(l)
-    
-    return render_template('data.html',result=l)
+    for row in row_iter:
+        l.append(row)	
+    return render_template('index.html',result=l)
+	
+@app.route("/test" , methods=['GET', 'POST'])
+def test():
+    select = request.form.get('comp_select')
+    print(select)
+    return(str(select)) # just to see what select is
 
 if __name__ == "__main__":
 	app.run(debug=True)
