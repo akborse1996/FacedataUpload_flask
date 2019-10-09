@@ -70,6 +70,25 @@
 
             min-width: 640px !important;
         }
+		
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color:#e3d2e7 ;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  color:black;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
     </style>
 </head>
 
@@ -82,8 +101,8 @@
             <div class="nav-wrapper">
                   <form class="form-inline" action="{{ url_for('test') }}">
 <select name="comp_select" >
-<option value="Selected" color="blue" selected> &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Client Visited </option>
-                     
+<center><option value="Selected" color="blue" selected>&nbsp;&nbsp;Client Visited </option>
+         </center>            
 {% for i in result %}
 <center>
 
@@ -92,10 +111,8 @@
      
 
 {% for key, value in i.items() %}
-                   {% if key=='ClientName'%}
-					<option class="boldoption">&nbsp; &nbsp;&nbsp;&nbsp; 
-					&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-					{{value}} </option>
+                   {% if key=='ClientName' %}
+					<option value={{value}} class="boldoption">&nbsp;&nbsp;&nbsp;{{value}} </option>
                    {% endif %} 
 
 {% endfor %}
@@ -103,7 +120,7 @@
 </div>
 {% endfor %}
 </select>
- <button type="submit">Go</button>
+ <button type="submit" class="block">Go</button>
   </form>
 <script>					
 var admOptionValue = document.getElementById("getFname").value;
@@ -120,14 +137,42 @@ var admOptionValue = document.getElementById("getFname").value;
         <div class="left-panel">
 
             <div class="workstations row #efebe9 brown lighten-5 z-depth-4 hoverable">
-
+ 
 
                 <form action="">
 				<select id="getFname" onchange="admSelectCheck(this.select);">
-                        <option value="Selected" >Selected</option>
-                        <option value="Selected">New Delhi</option>
-                        <option value="Selected">Mumbai</option>
-                        <option value="Selected">Noida</option>
+								
+{% for i in result %}     
+
+{% for key, value in i.items() %}
+                   {% if r==value%} 
+	
+				<option value="volvo" selected>Customer Visited from : &nbsp {{i['ClientName']}} </option>
+                   {% endif %}      
+
+					 
+{% endfor %}
+
+
+{% endfor %}
+{% for i in result %}     
+
+{% for key, value in i.items() %}
+                   {% if r==value%} 
+				     
+					  <option >
+					{{i['CustomerName']}} </option>
+					 
+					
+					
+                   {% endif %}      
+
+					 
+{% endfor %}
+
+
+{% endfor %}
+                      
                     </select>
                 </form>
 
