@@ -10,6 +10,7 @@ app = Flask(__name__,template_folder='template')
 
 @app.route("/")
 def index():
+
     
     cb.upsert('12', {'DockingID': 'D1', 'ClientName':'Pearson',
                      'ClientID':'Pearson101','CustomerName':'Amol Borse','CustomerID':'Amol111','Expression':'Smile','Probability':8.6,'DateTime': '2019-10-03T15:10:05.999'})
