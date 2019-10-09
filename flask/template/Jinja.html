@@ -101,8 +101,8 @@
             <div class="nav-wrapper">
                   <form class="form-inline" action="{{ url_for('test') }}">
 <select name="comp_select" >
-<option value="Selected" color="blue" selected> &nbsp;   Client Visited </option>
-                     
+<center><option value="Selected" color="blue" selected>&nbsp;&nbsp;Client Visited </option>
+         </center>            
 {% for i in result %}
 <center>
 
@@ -112,7 +112,7 @@
 
 {% for key, value in i.items() %}
                    {% if key=='ClientName' %}
-					<option class="boldoption">&nbsp; &nbsp;{{value}} </option>
+					<option value={{value}} class="boldoption">&nbsp;&nbsp;&nbsp;{{value}} </option>
                    {% endif %} 
 
 {% endfor %}
@@ -141,7 +141,20 @@ var admOptionValue = document.getElementById("getFname").value;
 
                 <form action="">
 				<select id="getFname" onchange="admSelectCheck(this.select);">
-				<option value="volvo" selected>Customer Visited</option>
+								
+{% for i in result %}     
+
+{% for key, value in i.items() %}
+                   {% if r==value%} 
+	
+				<option value="none" selected>Customer Visited from : &nbsp {{i['ClientName']}} </option>
+                   {% endif %}      
+
+					 
+{% endfor %}
+
+
+{% endfor %}
 {% for i in result %}     
 
 {% for key, value in i.items() %}
@@ -164,10 +177,32 @@ var admOptionValue = document.getElementById("getFname").value;
                 </form>
 
                 <h4 class="text-display-4">Result</h4>
+{% for i in result %}     
+
+{% for key, value in i.items() %}
+                   {% if r==value%} 
                 <div class="workstation col s6">
                     <div class="card horizontal">
                         <div class="card-image">
-                            <img class="materialboxed" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUXXxpUjvgAGG-IIaFgpW_oo9DDX8LAwylBMyx4W7PuEhl-NHj"
+                            <img class="materialboxed" src={{i['Expression']}}
+                                alt="None">
+                        </div>
+                        <div class="card-content">
+                            <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, nostrum.</p>
+                        </div>
+                    </div>
+                </div>
+				   {% endif %}      
+
+					 
+{% endfor %}
+
+
+{% endfor %}
+                <div class="workstation col s6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img class="materialboxed" src="{{url_for('static', filename='download.png')}}"
                                 alt="">
                         </div>
                         <div class="card-content">
@@ -178,18 +213,7 @@ var admOptionValue = document.getElementById("getFname").value;
                 <div class="workstation col s6">
                     <div class="card horizontal">
                         <div class="card-image">
-                            <img class="materialboxed" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUXXxpUjvgAGG-IIaFgpW_oo9DDX8LAwylBMyx4W7PuEhl-NHj"
-                                alt="">
-                        </div>
-                        <div class="card-content">
-                            <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, nostrum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="workstation col s6">
-                    <div class="card horizontal">
-                        <div class="card-image">
-                            <img class="materialboxed" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUXXxpUjvgAGG-IIaFgpW_oo9DDX8LAwylBMyx4W7PuEhl-NHj"
+                            <img class="materialboxed" src="{{url_for('static', filename='sad.jpg')}}"
                                 alt="">
                         </div>
                         <div class="card-content">

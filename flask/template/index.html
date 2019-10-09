@@ -101,7 +101,7 @@
             <div class="nav-wrapper">
                   <form class="form-inline" action="{{ url_for('test') }}">
 <select name="comp_select" >
-<center><option value="Selected" color="blue" selected>&nbsp;&nbsp;Client Visited </option>
+<center><option value="Selected" co\or="blue" selected>&nbsp;&nbsp;Client Visited </option>
          </center>            
 {% for i in result %}
 <center>
@@ -139,44 +139,29 @@ var admOptionValue = document.getElementById("getFname").value;
             <div class="workstations row #efebe9 brown lighten-5 z-depth-4 hoverable">
  
 
-                <form action="">
-				<select id="getFname" onchange="admSelectCheck(this.select);">
+                <form class="form-inline" action="{{ url_for('test2') }}">
+				<select name="comp_select2" >
+				<option value="volvo" selected>Customer Visited  </option>
 								
 {% for i in result %}     
-
 {% for key, value in i.items() %}
                    {% if r==value%} 
-	
-				<option value="volvo" selected>Customer Visited from : &nbsp {{i['ClientName']}} </option>
-                   {% endif %}      
-
-					 
-{% endfor %}
-
-
-{% endfor %}
-{% for i in result %}     
-
-{% for key, value in i.items() %}
-                   {% if r==value%} 
-				     
 					  <option >
 					{{i['CustomerName']}} </option>
-					 
-					
-					
                    {% endif %}      
 
 					 
 {% endfor %}
-
-
 {% endfor %}
-                      
                     </select>
+					 <button type="submit" class="block">Go</button>
                 </form>
-
-                <h4 class="text-display-4">Result</h4>
+         <h4 class="text-display-4">Result</h4>
+{% for i in result %}     
+{% for key, value in i.items() %}
+                   {% if cusName==value%} 
+                      
+       
                 <div class="workstation col s6">
                     <div class="card horizontal">
                         <div class="card-image">
@@ -184,43 +169,19 @@ var admOptionValue = document.getElementById("getFname").value;
                                 alt="">
                         </div>
                         <div class="card-content">
-                            <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, nostrum.</p>
-                        </div>
+                            <p class="lead"> Expression : {{i['Expression']}}</p>
+                            <p class="lead"> Probability: {{i['Probability']}}</p>
+							<p class="lead"> DockingID: {{i['DockingID']}}</p>
+							
+                   {% endif %}      					 
+{% endfor %}
+{% endfor %}                         
+					   </div>
                     </div>
                 </div>
-                <div class="workstation col s6">
-                    <div class="card horizontal">
-                        <div class="card-image">
-                            <img class="materialboxed" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUXXxpUjvgAGG-IIaFgpW_oo9DDX8LAwylBMyx4W7PuEhl-NHj"
-                                alt="">
-                        </div>
-                        <div class="card-content">
-                            <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, nostrum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="workstation col s6">
-                    <div class="card horizontal">
-                        <div class="card-image">
-                            <img class="materialboxed" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUXXxpUjvgAGG-IIaFgpW_oo9DDX8LAwylBMyx4W7PuEhl-NHj"
-                                alt="">
-                        </div>
-                        <div class="card-content">
-                            <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, nostrum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="workstation col s6">
-                    <div class="card horizontal">
-                        <div class="card-image">
-                            <img class="materialboxed" width="650" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUXXxpUjvgAGG-IIaFgpW_oo9DDX8LAwylBMyx4W7PuEhl-NHj"
-                                alt="">
-                        </div>
-                        <div class="card-content">
-                            <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, nostrum.</p>
-                        </div>
-                    </div>
-                </div>
+                
+               
+                
             </div>
         </div>
     </div>
